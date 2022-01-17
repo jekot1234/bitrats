@@ -4,11 +4,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('/src/index.html')
+    return render_template('index.html')
 
-@app.route("/script")
-def script():
-    return send_from_directory('js', '/src/js/three.js')
+@app.route('/js/<path:path>')
+def script(path):
+    return send_from_directory('js', path)
 
 def main(*args, **kwargs):
     port = int(os.environ.get('PORT', 5000))
