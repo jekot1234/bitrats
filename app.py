@@ -10,6 +10,11 @@ def index():
 def script(path):
     return send_from_directory('js', path)
 
+@app.route('/<path:path>')
+def script(path):
+    return send_from_directory('resources', path)
+
+
 def main(*args, **kwargs):
     port = int(os.environ.get('PORT', 5000))
     app.run(host = '0.0.0.0', port = port)
