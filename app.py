@@ -10,9 +10,10 @@ def index():
 def script(path):
     return send_from_directory('js', path)
 
-@app.route('/<path:path>')
-def script(path):
-    return send_from_directory('resources', path)
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'resources'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 def main(*args, **kwargs):
